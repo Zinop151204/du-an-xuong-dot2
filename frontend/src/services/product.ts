@@ -1,6 +1,16 @@
 import instance from '@/configs/axios'
-import { IProduct } from '@/interfaces/product'
+import { IProduct } from '@/types/product'
 
+const userDataString = localStorage.getItem('user');
+let token = '';
+if (userDataString) {
+    try {
+        const userData = JSON.parse(userDataString);
+        token = userData.token || '';
+    } catch (error) {
+        console.error('Không thể phân tích dữ liệu từ localStorage:', error);
+    }
+}
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getAllProducts = async (params?: any): Promise<IProduct[]> => {
     try {
@@ -20,7 +30,12 @@ export const getProductById = async (id: number | string) => {
 }
 export const addProduct = async (product: IProduct) => {
     try {
-        const response = await instance.post(`/products`, product)
+        const response = await instance.post(`/products`, product, {
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": "Bearer " + token ? token : ''
+            },
+        })
         return response.data
     } catch (error) {
         console.log(error)

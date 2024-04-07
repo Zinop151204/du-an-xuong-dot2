@@ -1,16 +1,19 @@
-export interface IProduct{
+export interface IProduct {
     _id?: number | string,
+    image: string,
     name: string,
     category?: string,
-    gallery?:string[],
     price: number,
-    image: string,
+    gallery?: string[],
+    quantity: number,
+
     description: string,
     discount: number,
     featured: boolean,
     countInStock: number,
-    quantity: number
 }
+
+
 
 // name: {
 //     type: String,
