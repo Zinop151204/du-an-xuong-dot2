@@ -1323,8 +1323,27 @@ img {
         border-radius: 10px;
         box-shadow: 0px 0px 10px rgba(8, 8, 8, 0.404);
     }
+    &-formup {
+        width: 800px;
+        height: 1000px;
+        margin: auto;
+        margin-top: 50px;
+        background-color: #FFFFFF;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(8, 8, 8, 0.404);
+    }
+
+    &-for-sginupTK-ip {
+        text-decoration: none;
+        color: black;
+    }
 
     &-form h2 {
+        color: #B88E2F;
+        font-size: 30px;
+        text-align: center;
+    }
+    &-formup h2 {
         color: #B88E2F;
         font-size: 30px;
         text-align: center;
@@ -1401,6 +1420,7 @@ img {
         margin-left: 100px;
         margin-bottom: 30px;
     }
+    
 
 
 }

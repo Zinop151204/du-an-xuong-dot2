@@ -13,6 +13,7 @@ import {
 } from "@tanstack/react-table";
 import { Plus } from "lucide-react";
 import { Link } from "react-router-dom";
+
 import { useProductQuery } from "@/hooks/useQueryProduct";
 import { useState } from "react";
 import { columns } from "./Column";
@@ -21,7 +22,10 @@ import FooterTable from "./FooterTable";
 import HeaderTable from "./HeaderTable";
 
 const ProductList = () => {
-    const { data, isLoading } = useProductQuery({ _expand: "category" });
+    const { data, isLoading } = useProductQuery({
+        _expand: "category",
+        _limit: 100,
+    });
     const [sorting, setSorting] = useState<SortingState>([]);
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
     const [columnVisibility, setColumnVisibility] = useState<VisibilityState>(
@@ -29,7 +33,7 @@ const ProductList = () => {
     );
     const [rowSelection, setRowSelection] = useState({});
     const table = useReactTable({
-        data: data?.data ?? [],
+        data: data ?? [],
         columns,
         onSortingChange: setSorting,
         onColumnFiltersChange: setColumnFilters,
@@ -49,13 +53,22 @@ const ProductList = () => {
     return (
         <>
             <div className="flex justify-between items-center py-3">
-                <h2>Product List</h2>
-                <Link to="/admin/products/add" className="flex items-center">
-                    <Button>
-                        <Plus />
-                        Add Product
-                    </Button>
-                </Link>
+                <div className="space-y-0.5">
+                    <h2 className="text-2xl font-bold tracking-tight">
+                        Quản lý sản phẩm
+                    </h2>
+                </div>
+                <div>
+                    <Link
+                        to="/admin/products/add"
+                        className="flex items-center"
+                    >
+                        <Button>
+                            <Plus />
+                            Add Product
+                        </Button>
+                    </Link>
+                </div>
             </div>
             <hr />
             <div className="my-5">
@@ -117,4 +130,5 @@ const ProductList = () => {
         </>
     );
 };
+
 export default ProductList;

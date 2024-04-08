@@ -6,7 +6,7 @@ import { useLocalStorage } from '@/hooks/useStorage';
 import Joi from "joi";
 import { joiResolver } from '@hookform/resolvers/joi';
 
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const signinSchema = Joi.object({
@@ -31,7 +31,7 @@ const Signin = () => {
         },
         onSuccess: (data) => {
             setUser(data);
-            navigate('/'); 
+            navigate('/');
             alert("Đăng nhập thành công!");
         },
         onError: (error) => console.log(error),
@@ -41,7 +41,7 @@ const Signin = () => {
         mutate(formData);
     }
     return (
-        
+
         <div className="login-form">
             <button className="login-form-btn"><img src={imgbtn} /></button>
             <br /><br />
@@ -53,13 +53,13 @@ const Signin = () => {
                     {errors.email && <p>{errors.email?.message}</p>}
 
                 </div>
-                
+
                 <div className="login-form-tk">
                     <p>Password:</p>
                     <input className="login-form-input" type="password"{...register('password', { required: true, minLength: 6 })} placeholder='mật khẩu....' />
                     {errors.password && <p>{errors.password?.message}</p>}
                 </div>
-                <div className='login-for-sginupTK' ><a href="http://">Đăng kí tài khoản ?</a></div>
+                <div className='login-for-sginupTK' ><Link className='login-for-sginupTK-ip' to="/signup">Đăng kí tài khoản ?</Link></div>
 
                 <div className="login-form-lg">
                     <button className="login-from-btn"><strong>Login</strong></button>
@@ -73,7 +73,7 @@ const Signin = () => {
                     <button><strong>Google</strong></button>
                 </div>
             </div>
-           
+
         </div>
     )
 }

@@ -14,6 +14,7 @@ import OutletView from '@/viewWedsite/OutletView'
 import Home from '@/pages/user/Home'
 import ProductAddPage from '@/pages/(dashboard)/product/_components/add'
 import ProductEditPage from '@/pages/(dashboard)/product/_components/edit'
+import Signup from '@/pages/login/signup'
 
 
 function Router() {
@@ -29,6 +30,7 @@ function Router() {
           <Route path='/detailcategory/:id' element={<CategoryDetail/>}/>
           <Route path='products/:id' element={<DetailProduct />} />
           <Route path='signin' element={<Signin/>}/>
+          <Route path='signup' element={<Signup/>}/>
           <Route path='carts' element={<Cart/>}/>
           <Route path='order' element={<Order/>}/>
         </Route>

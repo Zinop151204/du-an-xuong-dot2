@@ -1,16 +1,16 @@
-import { IProduct } from "@/types/product";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
+    DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
+import { IProduct } from "@/types/product";
 import { ColumnDef } from "@tanstack/react-table";
 import { MoreHorizontal } from "lucide-react";
+import { Link } from "react-router-dom";
+
 export const columns: ColumnDef<IProduct>[] = [
     {
         id: "select",
@@ -66,6 +66,7 @@ export const columns: ColumnDef<IProduct>[] = [
                 style: "currency",
                 currency: "USD",
             }).format(amount);
+
             return <div className="font-medium">{formatted}</div>;
         },
     },
@@ -98,12 +99,12 @@ export const columns: ColumnDef<IProduct>[] = [
                         </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem>Copy payment ID</DropdownMenuItem>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem>View customer</DropdownMenuItem>
                         <DropdownMenuItem>
-                            View payment details
+                            <Link
+                                to={`/admin/products/${row.original._id}/edit`}
+                            >
+                                Cập nhật
+                            </Link>
                         </DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
