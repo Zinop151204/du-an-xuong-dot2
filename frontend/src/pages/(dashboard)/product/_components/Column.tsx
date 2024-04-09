@@ -11,6 +11,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { MoreHorizontal } from "lucide-react";
 import { Link } from "react-router-dom";
 
+
 export const columns: ColumnDef<IProduct>[] = [
     {
         id: "select",
@@ -105,6 +106,15 @@ export const columns: ColumnDef<IProduct>[] = [
                             >
                                 Cập nhật
                             </Link>
+                            
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                            <button
+                            
+                            >
+                               Xóa
+                            </button>
+                            
                         </DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>

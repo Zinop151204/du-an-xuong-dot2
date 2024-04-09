@@ -26,6 +26,7 @@ const ProductList = () => {
         _expand: "category",
         _limit: 100,
     });
+    
     const [sorting, setSorting] = useState<SortingState>([]);
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
     const [columnVisibility, setColumnVisibility] = useState<VisibilityState>(
